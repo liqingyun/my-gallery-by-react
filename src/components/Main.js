@@ -35,31 +35,31 @@ class ImgFigure extends React.Component {
 }
 
 class AppComponent extends React.Component {
-  this.Constant = {
-    centerPos: {
+  Constant () {
+    return {
+      centerPos: {
         left: 0,
         right: 0
-    },
-    hPosRange: {   // 水平方向的取值范围
+      },
+      hPosRange: {   // 水平方向的取值范围
         leftSecX: [0, 0],
         rightSecX: [0, 0],
         y: [0, 0]
-    },
-    vPosRange: {    // 垂直方向的取值范围
+      },
+      vPosRange: {    // 垂直方向的取值范围
         x: [0, 0],
         topY: [0, 0]
-    }
+      }}
   };
 
    /*
    * 重新布局所有图片
    * @param centerIndex 指定居中排布哪个图片
    */
-  rearrange(centerIndex) {
-    console.log(centerIndex);
-    console.log(this.Constant.centerPos);
-    let imgsArrangArr = this.stage.imgsArrangArr,
-        Constant = this.Constant,
+  rearrange (centerIndex) {
+    console.log(this);
+    let imgsArrangArr = this.state.imgsArrangArr,
+        Constant = this.Constant(),
         centerPos = Constant.centerPos,
         hPosRange = Constant.hPosRange,
         vPosRange = Constant.vPosRange,
@@ -73,7 +73,7 @@ class AppComponent extends React.Component {
         topImgNum = Math.floor(Math.random() * 2),    // 取一个或者不取
         topImgSpliceIndex = 0,
 
-        imgsArrangeCenterArr = imgsArrangeArr.splice(centerIndex, 1);
+        imgsArrangeCenterArr = imgsArrangArr.splice(centerIndex, 1);
 
         // 首先居中 centerIndex 的图片, 居中的 centerIndex 的图片不需要旋转
         imgsArrangeCenterArr[0] = {
@@ -81,7 +81,7 @@ class AppComponent extends React.Component {
           rotate: 0,
           isCenter: true
         };
-    console.log(imgsArrangArr);
+    console.log(hPosRange);
   };
   constructor(props) {
     super(props);
@@ -106,7 +106,7 @@ class AppComponent extends React.Component {
         halfImgH = Math.ceil(imgH / 2);
         console.log('111');
         console.log(this);
-        console.log(this.Constant.centerPos);
+        console.log(this.Constant());
         console.log('qqqq');
     // 计算中心图片的位置点
     this.Constant.centerPos = {
@@ -115,18 +115,18 @@ class AppComponent extends React.Component {
     };
 
     // 计算左侧，右侧区域图片排布位置的取值范围
-    this.Constant.hPosRange.leftSecX[0] = -halfImgW;
-    this.Constant.hPosRange.leftSecX[1] = halfStageW - halfImgW * 3;
-    this.Constant.hPosRange.rightSecX[0] = halfStageW + halfImgW;
-    this.Constant.hPosRange.rightSecX[1] = stageW - halfImgW;
-    this.Constant.hPosRange.y[0] = -halfImgH;
-    this.Constant.hPosRange.y[1] = stageH - halfImgH;
+    this.Constant().hPosRange.leftSecX[0] = -halfImgW;
+    this.Constant().hPosRange.leftSecX[1] = halfStageW - halfImgW * 3;
+    this.Constant().hPosRange.rightSecX[0] = halfStageW + halfImgW;
+    this.Constant().hPosRange.rightSecX[1] = stageW - halfImgW;
+    this.Constant().hPosRange.y[0] = -halfImgH;
+    this.Constant().hPosRange.y[1] = stageH - halfImgH;
 
     // 计算上侧区域图片排布位置的取值范围
-    this.Constant.vPosRange.topY[0] = -halfImgH;
-    this.Constant.vPosRange.topY[1] = halfStageH - halfImgH * 3;
-    this.Constant.vPosRange.x[0] = halfStageW - imgW;
-    this.Constant.vPosRange.x[1] = halfStageW;
+    this.Constant().vPosRange.topY[0] = -halfImgH;
+    this.Constant().vPosRange.topY[1] = halfStageH - halfImgH * 3;
+    this.Constant().vPosRange.x[0] = halfStageW - imgW;
+    this.Constant().vPosRange.x[1] = halfStageW;
 
     this.rearrange(0);
 
