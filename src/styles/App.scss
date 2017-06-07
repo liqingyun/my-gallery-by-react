@@ -25,6 +25,26 @@ html, body {
   height: 100%;
   overflow: hidden;
   background-color: #ddd;
+  @at-root {
+    .img-figure {
+      position: absolute;
+
+      width: 320px;
+      height: 360px;
+      margin: 0px;
+      padding: 40px;
+      box-sizing: border-box;
+      background-color: #fff;
+    }
+    figcaption {
+      text-align: center;
+      .img-title {
+        margin: 20px 0px 0px 0px;
+        color: #a7a0a2;
+        font-size: 16px;
+      }
+    }
+  }
 }
 /* image -- end */
 
